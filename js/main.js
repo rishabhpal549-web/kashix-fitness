@@ -220,6 +220,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  const faqCompactItems = document.querySelectorAll('.faq-compact-item');
+  faqCompactItems.forEach(item => {
+    const question = item.querySelector('.faq-compact-question');
+    if (question) {
+      question.addEventListener('click', () => {
+        const isActive = item.classList.contains('active');
+        faqCompactItems.forEach(other => {
+          if (other !== item) other.classList.remove('active');
+        });
+        if (!isActive) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+  });
+
   // --- Gallery Filter Bar ---
   const filterBtns = document.querySelectorAll('.gallery-filter-btn');
   const galleryItems = document.querySelectorAll('.gallery-item');
